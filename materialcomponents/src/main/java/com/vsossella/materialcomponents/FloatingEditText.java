@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -58,9 +59,6 @@ public class FloatingEditText extends RelativeLayout {
     private void addAnimation() {
         final TextView floatingLabel = getFloatingTextView();
         final EditText editText = getEditText();
-        final float customInitialYTextView = floatingLabel.getY() - 5f;
-        floatingLabel.setY(customInitialYTextView);
-
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -71,8 +69,7 @@ public class FloatingEditText extends RelativeLayout {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(count == 1 && before == 0) {
-
-                    ObjectAnimator moveUp = ObjectAnimator.ofFloat(floatingLabel, "y", customInitialYTextView);
+                    ObjectAnimator moveUp = ObjectAnimator.ofFloat(floatingLabel, "y", editText.getY() - 30f);
                     ObjectAnimator showAnim = ObjectAnimator.ofFloat(floatingLabel, "alpha", 100f);
                     showAnim.setDuration(100);
                     moveUp.setDuration(100);
@@ -82,7 +79,7 @@ public class FloatingEditText extends RelativeLayout {
                 }
 
                 if(start == 0 && count == 0) {
-                    ObjectAnimator moveDown = ObjectAnimator.ofFloat(floatingLabel, "y", editText.getY() - 10f);
+                    ObjectAnimator moveDown = ObjectAnimator.ofFloat(floatingLabel, "y", floatingLabel.getY() + 10f);
                     ObjectAnimator hideAnim = ObjectAnimator.ofFloat(floatingLabel, "alpha", 0f);
                     hideAnim.setDuration(100);
                     moveDown.setDuration(100);
