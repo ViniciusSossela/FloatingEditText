@@ -39,15 +39,15 @@ public class FloatingEditText extends RelativeLayout {
     }
 
     private TextView getFloatingTextView() {
-        return layoutView.findViewById(R.id.text_view_hint_material);
+        return (TextView) layoutView.findViewById(R.id.text_view_hint_material);
     }
 
     private EditText getEditText() {
-        return layoutView.findViewById(R.id.edit_text_material);
+        return (EditText) layoutView.findViewById(R.id.edit_text_material);
     }
 
     private ImageView getIconImageView() {
-        return layoutView.findViewById(R.id.image_view_material_edit_text);
+        return (ImageView) layoutView.findViewById(R.id.image_view_material_edit_text);
     }
 
     private void init() {
@@ -59,6 +59,8 @@ public class FloatingEditText extends RelativeLayout {
         final TextView floatingLabel = getFloatingTextView();
         final EditText editText = getEditText();
         final float customInitialYTextView = floatingLabel.getY() - 5f;
+        floatingLabel.setY(customInitialYTextView);
+
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
