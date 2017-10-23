@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FloatingEditText">
+        <attr name="edit_text_font_size" format="dimension" />
+        <attr name="edit_text_value" format="string" />
+        <attr name="floating_label_font_size" format="dimension" />
+        <attr name="floating_label_text" format="string" />
+        <attr name="icon_left" format="reference" />
+    </declare-styleable>
+</resources>
