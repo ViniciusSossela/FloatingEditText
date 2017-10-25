@@ -22,7 +22,7 @@
         android:gravity="center"
         android:inputType="number"
         android:maxLines="1"
-        android:paddingBottom="10dp"
+        android:paddingBottom="5dp"
         android:textColor="@android:color/white" />
 
     <ImageView
@@ -30,8 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/edit_text_material"
-        android:layout_alignTop="@+id/edit_text_material"
-        android:paddingBottom="10dp" />
+        android:layout_alignTop="@+id/edit_text_material"/>
 
     <View
         android:id="@+id/edit_text_under_line"
