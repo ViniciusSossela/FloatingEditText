@@ -3,6 +3,10 @@
     <declare-styleable name="FloatingEditText">
         <attr name="edit_text_font_size" format="dimension" />
         <attr name="edit_text_value" format="string" />
+        <attr name="edit_text_error" format="string" />
+        <attr name="edit_text_decimal_mask" format="boolean" />
+        <attr name="edit_text_animate_up" format="boolean" />
+        <attr name="edit_text_max_length" format="integer" />
         <attr name="floating_label_font_size" format="dimension" />
         <attr name="floating_label_text" format="string" />
         <attr name="icon_left" format="reference" />
