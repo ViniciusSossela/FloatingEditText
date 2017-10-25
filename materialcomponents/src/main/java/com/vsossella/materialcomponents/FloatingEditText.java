@@ -155,11 +155,6 @@ public class FloatingEditText extends RelativeLayout {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            if (isFirstTime) {
-                isFirstTime = false;
-                return;
-            }
-
             if (s.length() > 0 && shouldAnimateOnEnterText) {
                 shouldAnimateOnEnterText = false;
                 shouldAnimateOnCleanText = true;
