@@ -17,7 +17,6 @@
         android:id="@+id/edit_text_material"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_hint_material"
         android:background="@android:color/transparent"
         android:gravity="center"
         android:inputType="number"
@@ -30,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/edit_text_material"
-        android:layout_alignTop="@+id/edit_text_material"/>
+        android:layout_alignTop="@+id/edit_text_material" />
 
     <View
         android:id="@+id/edit_text_under_line"
@@ -38,15 +37,5 @@
         android:layout_height="1dp"
         android:layout_alignBottom="@+id/edit_text_material"
         android:background="@android:color/white" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_view_error"
-        android:gravity="center"
-        android:textColor="@color/red"
-        android:visibility="gone"
-        android:layout_below="@+id/edit_text_under_line" />
-
 
 </RelativeLayout>

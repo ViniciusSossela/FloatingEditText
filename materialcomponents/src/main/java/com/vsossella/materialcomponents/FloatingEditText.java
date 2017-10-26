@@ -9,6 +9,7 @@ import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -34,6 +35,7 @@ public class FloatingEditText extends RelativeLayout {
     boolean shouldAnimateOnEnterText = true;
     boolean shouldAnimateOnCleanText = true;
     boolean applyDecimalMask = false;
+    TextView textViewMessageError;
 
 
     public void addMensagemErro(String mensagemErro) {
@@ -74,12 +76,16 @@ public class FloatingEditText extends RelativeLayout {
         addAnimation();
     }
 
+    private RelativeLayout getRelativeLayout() {
+        return (RelativeLayout) layoutView.findViewById(R.id.component_edit_tex_material);
+    }
+
     private TextView getFloatingTextView() {
         return (TextView) layoutView.findViewById(R.id.text_view_hint_material);
     }
 
     private TextView getTextViewError() {
-        return (TextView) layoutView.findViewById(R.id.text_view_error);
+        return textViewMessageError;
     }
 
     private EditText getEditText() {
@@ -100,6 +106,17 @@ public class FloatingEditText extends RelativeLayout {
         floatingLabel = getFloatingTextView();
         editText = getEditText();
         underlineEditText = getUnderlineEditText();
+        addMessageTextView();
+    }
+
+    private void addMessageTextView() {
+        textViewMessageError = new TextView(getContext());
+        textViewMessageError.setTextColor(getResources().getColor(R.color.red));
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        textViewMessageError.setLayoutParams(params);
+        textViewMessageError.setGravity(Gravity.CENTER);
+        params.addRule(RelativeLayout.BELOW, getUnderlineEditText().getId());
+        getRelativeLayout().addView(textViewMessageError);
     }
 
     private void addAnimation() {
@@ -162,7 +179,7 @@ public class FloatingEditText extends RelativeLayout {
                     animateField(editText.getY() - 30f, 100f);
                 } else {
                     setupRightYPosition(underlineEditText.getY() - 10f);
-                    animateField(underlineEditText.getY() + 10f, 100f);
+                    animateField(underlineEditText.getY() + 5f, 100f);
                 }
             }
 
@@ -173,7 +190,7 @@ public class FloatingEditText extends RelativeLayout {
                 if (animateUp) {
                     animateField(floatingLabel.getY() + 10f, 0f);
                 } else {
-                    animateField(underlineEditText.getY() - 10f, 0f);
+                    animateField(underlineEditText.getY() - 5f, 0f);
                 }
             }
         }
