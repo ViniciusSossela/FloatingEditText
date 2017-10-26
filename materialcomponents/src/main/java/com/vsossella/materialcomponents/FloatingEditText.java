@@ -102,8 +102,10 @@ public class FloatingEditText extends RelativeLayout {
     }
 
     public void setFontType(String type) {
-        if (type != null && !type.isEmpty())
+        if (type != null && !type.isEmpty()) {
             getEditText().setTypeface(getTypeface(type));
+            getFloatingTextView().setTypeface(getTypeface(type));
+        }
     }
 
     public Typeface getTypeface(String type) {
