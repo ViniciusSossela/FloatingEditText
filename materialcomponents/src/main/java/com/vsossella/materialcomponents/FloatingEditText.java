@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -100,6 +101,18 @@ public class FloatingEditText extends RelativeLayout {
         return layoutView.findViewById(R.id.edit_text_under_line);
     }
 
+    public void setFontType(String type) {
+        if (type != null && !type.isEmpty())
+            getEditText().setTypeface(getTypeface(type));
+    }
+
+    public Typeface getTypeface(String type) {
+        try {
+            return Typeface.createFromAsset(getContext().getAssets(), type + ".otf");
+        } catch (Exception e) {
+            throw new NullPointerException("Fail to load font type");
+        }
+    }
 
     private void init() {
         layoutView = mInflater.inflate(R.layout.floating_edit_text, this, true);
@@ -241,6 +254,9 @@ public class FloatingEditText extends RelativeLayout {
 
             String editTextError = attributes.getString(R.styleable.FloatingEditText_edit_text_error);
             addMensagemErro(editTextError);
+
+            String editTextFontType = attributes.getString(R.styleable.FloatingEditText_edit_text_font_type);
+            setFontType(editTextFontType);
 
             animateUp = attributes.getBoolean(R.styleable.FloatingEditText_edit_text_animate_up, false);
             applyDecimalMask = attributes.getBoolean(R.styleable.FloatingEditText_edit_text_decimal_mask, false);
