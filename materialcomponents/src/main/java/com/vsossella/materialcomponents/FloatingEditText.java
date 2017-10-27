@@ -37,6 +37,7 @@ public class FloatingEditText extends RelativeLayout {
     boolean shouldAnimateOnCleanText = true;
     boolean applyDecimalMask = false;
     TextView textViewMessageError;
+    TextWatcher componentTextWatcher;
 
 
     public void addMensagemErro(String mensagemErro) {
@@ -232,7 +233,6 @@ public class FloatingEditText extends RelativeLayout {
         animationFadein.start();
     }
 
-
     private NumberFormat getNumberFormat() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         DecimalFormatSymbols dfs = new DecimalFormatSymbols();
@@ -285,4 +285,8 @@ public class FloatingEditText extends RelativeLayout {
         }
     }
 
+    public void addTextChangedListener(TextWatcher textWatcher) {
+        componentTextWatcher = textWatcher;
+        getEditText().addTextChangedListener(textWatcher);
+    }
 }
