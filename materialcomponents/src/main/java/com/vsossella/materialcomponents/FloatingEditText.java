@@ -228,6 +228,7 @@ public class FloatingEditText extends RelativeLayout {
         ObjectAnimator showAnim = ObjectAnimator.ofFloat(floatingLabel, "alpha", alpha);
         showAnim.setDuration(100);
         moveUp.setDuration(100);
+
         AnimatorSet animationFadein = new AnimatorSet();
         animationFadein.play(moveUp).with(showAnim);
         animationFadein.start();
