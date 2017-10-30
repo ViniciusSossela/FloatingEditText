@@ -13,6 +13,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -32,13 +33,12 @@ public class FloatingEditText extends RelativeLayout {
     LayoutInflater mInflater;
     View layoutView;
     boolean animateUp = true;
-    boolean isFirstTime = true;
     boolean shouldAnimateOnEnterText = true;
     boolean shouldAnimateOnCleanText = true;
     boolean applyDecimalMask = false;
+    String editTextValue = "";
     TextView textViewMessageError;
     TextWatcher componentTextWatcher;
-
 
     public void addMensagemErro(String mensagemErro) {
 
@@ -123,6 +123,17 @@ public class FloatingEditText extends RelativeLayout {
         editText = getEditText();
         underlineEditText = getUnderlineEditText();
         addMessageTextView();
+        addOnViewLayoutedListener();
+    }
+
+    private void addOnViewLayoutedListener() {
+        ViewTreeObserver observer = getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                initialize();
+            }
+        });
     }
 
     private void addMessageTextView() {
@@ -161,7 +172,7 @@ public class FloatingEditText extends RelativeLayout {
                 String cleanString = s.toString().replaceAll("[$,.]", "");
 
                 double parsed = Double.parseDouble(cleanString);
-                String formatted = parsed == 0 ? "" : getNumberFormat().format((parsed / 100));
+                String formatted = getNumberFormat().format((parsed / 100));
 
                 current = formatted;
                 getEditText().setText(formatted);
@@ -271,10 +282,7 @@ public class FloatingEditText extends RelativeLayout {
             filterArray[0] = new InputFilter.LengthFilter(editTextMaxLength);
             getEditText().setFilters(filterArray);
 
-
-            String editTextValue = attributes.getString(R.styleable.FloatingEditText_edit_text_value);
-            getEditText().setText(editTextValue);
-
+            editTextValue = attributes.getString(R.styleable.FloatingEditText_edit_text_value);
 
             float floatingLabelTextSize = attributes.getDimensionPixelSize(R.styleable.FloatingEditText_floating_label_font_size, 10);
             getFloatingTextView().setTextSize(TypedValue.COMPLEX_UNIT_PX, floatingLabelTextSize);
@@ -289,5 +297,10 @@ public class FloatingEditText extends RelativeLayout {
     public void addTextChangedListener(TextWatcher textWatcher) {
         componentTextWatcher = textWatcher;
         getEditText().addTextChangedListener(textWatcher);
+    }
+
+    public void initialize() {
+        if (editTextValue != null && !editTextValue.isEmpty())
+            getEditText().setText(editTextValue);
     }
 }

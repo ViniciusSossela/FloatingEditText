@@ -21,6 +21,7 @@
         app:edit_text_max_length="12"
         app:floating_label_font_size="10sp"
         app:floating_label_text="Renda"
+        app:edit_text_value="0"
         app:edit_text_decimal_mask="true"
         app:edit_text_error="Some error message"
         app:icon_left="@drawable/ico_inicio_up">
