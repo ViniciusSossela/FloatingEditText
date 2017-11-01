@@ -35,8 +35,13 @@ public class ObservableFloating {
 
     }
 
-    public String getValue() {
+    public String get() {
         return value;
+    }
+
+    public void set(String value) {
+        this.value = value;
+        this.floatingEditText.setEditTextValue(value);
     }
 
 }

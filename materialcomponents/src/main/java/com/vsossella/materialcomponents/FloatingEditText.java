@@ -301,6 +301,10 @@ public class FloatingEditText extends RelativeLayout {
 
     public void initialize() {
         if (editTextValue != null && !editTextValue.isEmpty())
-            getEditText().setText(editTextValue);
+            setEditTextValue(editTextValue);
+    }
+
+    public void setEditTextValue(String value) {
+        getEditText().setText(value);
     }
 }

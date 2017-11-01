@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, renda.getValue(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, renda.get(), Toast.LENGTH_LONG).show();
             }
         });
     }
