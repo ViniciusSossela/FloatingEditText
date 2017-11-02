@@ -38,7 +38,6 @@ public class FloatingEditText extends RelativeLayout {
     boolean applyDecimalMask = false;
     String editTextValue = "";
     TextView textViewMessageError;
-    TextWatcher componentTextWatcher;
 
     public void addMensagemErro(String mensagemErro) {
 
@@ -295,8 +294,11 @@ public class FloatingEditText extends RelativeLayout {
     }
 
     public void addTextChangedListener(TextWatcher textWatcher) {
-        componentTextWatcher = textWatcher;
         getEditText().addTextChangedListener(textWatcher);
+    }
+
+    public void removeTextChangedListener(TextWatcher textWatcher) {
+        getEditText().removeTextChangedListener(textWatcher);
     }
 
     public void initialize() {
