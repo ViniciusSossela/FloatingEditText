@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/vsossella/Documents/workspace-studies/materialComponents/MaterialComponents/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/vsossella/Documents/workspace-studies/materialComponents/MaterialComponents/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_bd13671aa9a0225881238c0dfee958d7447d8ea2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/vsossella/Documents/workspace-studies/materialComponents/MaterialComponents/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="40ce933bb2088c678851973323487129834d90ac">
+        <dex dex="/Users/vsossella/Documents/workspace-studies/materialComponents/MaterialComponents/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_daec5e1dd2e6ec61a17f9908d87a6ff3db945452/classes.dex" />
+    </item>
+
+</items>

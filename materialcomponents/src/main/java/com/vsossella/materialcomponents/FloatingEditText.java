@@ -198,7 +198,7 @@ public class FloatingEditText extends RelativeLayout {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            if (s.length() > 0 && shouldAnimateOnEnterText) {
+            if (s.length() > 0 && shouldAnimateOnEnterText && underlineEditText.getY() != 0) {
                 shouldAnimateOnEnterText = false;
                 shouldAnimateOnCleanText = true;
                 if (animateUp) {
@@ -210,7 +210,7 @@ public class FloatingEditText extends RelativeLayout {
             }
 
 
-            if (s.length() == 0 && shouldAnimateOnCleanText) {
+            if (s.length() == 0 && shouldAnimateOnCleanText && underlineEditText.getY() != 0) {
                 shouldAnimateOnCleanText = false;
                 shouldAnimateOnEnterText = true;
                 if (animateUp) {
@@ -307,6 +307,7 @@ public class FloatingEditText extends RelativeLayout {
     }
 
     public void setEditTextValue(String value) {
+        editTextValue = value;
         getEditText().setText(value);
     }
 }
