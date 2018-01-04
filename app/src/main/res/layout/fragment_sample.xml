@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="match_parent"
+    android:background="#000"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="This is just a sample of usage of FloatingEditText" />
+
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/colorAccent"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="With hint on bottom" />
+
+    <com.vsossella.materialcomponents.FloatingEditText
+        android:id="@+id/valor_floating_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:edit_text_animate_up="false"
+        app:edit_text_decimal_mask="true"
+        app:edit_text_font_size="34sp"
+        app:edit_text_font_type="light"
+        app:edit_text_max_length="12"
+        app:edit_text_value="0"
+        app:floating_label_font_size="12sp"
+        app:floating_label_text="Brazilian Monetary Value"
+        app:icon_left="@drawable/r" />
+
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/colorAccent"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="With hint on top" />
+
+    <com.vsossella.materialcomponents.FloatingEditText
+        android:id="@+id/valor_floating_edit_text_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:edit_text_animate_up="true"
+        app:edit_text_decimal_mask="true"
+        app:edit_text_font_size="34sp"
+        app:edit_text_font_type="light"
+        app:edit_text_max_length="12"
+        app:edit_text_value="0"
+        app:floating_label_font_size="12sp"
+        app:floating_label_text="Brazilian Monetary Value"
+        app:icon_left="@drawable/r" />
+
+
+</LinearLayout>

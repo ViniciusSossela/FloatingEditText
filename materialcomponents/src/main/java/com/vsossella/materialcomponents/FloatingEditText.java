@@ -214,12 +214,11 @@ public class FloatingEditText extends RelativeLayout {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             if (s.length() > 0 && shouldAnimateOnEnterText && underlineEditText.getY() != 0) {
                 shouldAnimateOnEnterText = false;
                 shouldAnimateOnCleanText = true;
                 if (animateUp) {
-                    animateField(editText.getY() - 30f, 100f);
+                    animateField(underlineEditText.getY() - 60f, 100f);
                 } else {
                     setupRightYPosition(underlineEditText.getY() - 10f);
                     animateField(underlineEditText.getY() + 5f, 100f);
@@ -289,6 +288,16 @@ public class FloatingEditText extends RelativeLayout {
             setFontType(editTextFontType);
 
             animateUp = attributes.getBoolean(R.styleable.FloatingEditText_edit_text_animate_up, false);
+
+            float scale = getResources().getDisplayMetrics().density;
+            int paddingTop = (int) (15 * scale + 0.5f);
+            int paddingBottom = (int) (5 * scale + 0.5f);
+
+            if (animateUp)
+                getEditText().setPadding(0, paddingTop, 0, paddingBottom);
+            else
+                getEditText().setPadding(0, 0, 0, paddingBottom);
+
             applyDecimalMask = attributes.getBoolean(R.styleable.FloatingEditText_edit_text_decimal_mask, false);
             float editTextFontSize = attributes.getDimensionPixelSize(R.styleable.FloatingEditText_edit_text_font_size, 16);
             getEditText().setTextSize(TypedValue.COMPLEX_UNIT_PX, editTextFontSize);
