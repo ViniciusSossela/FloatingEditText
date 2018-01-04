@@ -3,6 +3,12 @@ MaterialEditText with support to add drawable icon on left and right side of Edi
 
 ![alt text](https://image.ibb.co/hnof2G/Screen_Shot_2018_01_04_at_11_23_22.png)
 
+Gradle
+```xml
+compile 'com.github.ViniciusSossela:MaterialComponents:1.3.12'
+```
+
+Layout XML
 ```xml
 <com.vsossella.materialcomponents.FloatingEditText
         android:id="@+id/valor_floating_edit_text"
