@@ -5,10 +5,12 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.nfc.Tag;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -29,6 +31,8 @@ import java.text.NumberFormat;
  */
 
 public class FloatingEditText extends RelativeLayout {
+    private static final String TAG = "FloatingEditText";
+
 
     LayoutInflater mInflater;
     View layoutView;
@@ -74,7 +78,7 @@ public class FloatingEditText extends RelativeLayout {
 
         init();
         loadCustomAttributeSet(context, attrs);
-        addAnimation();
+        addDecimalMaskListener();
     }
 
     private RelativeLayout getRelativeLayout() {
@@ -147,7 +151,9 @@ public class FloatingEditText extends RelativeLayout {
 
     private void addAnimation() {
         getEditText().addTextChangedListener(animationFloatingTextViewWatcher);
+    }
 
+    private void addDecimalMaskListener() {
         if (applyDecimalMask)
             getEditText().addTextChangedListener(currencyFormatWatcher);
     }
@@ -164,16 +170,27 @@ public class FloatingEditText extends RelativeLayout {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            if (!s.toString().equals(current)) {
-                clearMensagemErro();
+            try {
+                String cleanString = s.toString().replaceAll("[$,.]", "");
+                double parsed = Double.parseDouble(cleanString);
+
+                if (!s.toString().equals(current)) {
+                    clearMensagemErro();
+                    getEditText().removeTextChangedListener(this);
+
+                    String formatted = getNumberFormat().format((parsed / 100));
+
+                    current = formatted;
+                    getEditText().setText(formatted);
+                    getEditText().setSelection(formatted.length());
+
+                    getEditText().addTextChangedListener(this);
+                }
+
+            } catch (Exception e) {
                 getEditText().removeTextChangedListener(this);
 
-                String cleanString = s.toString().replaceAll("[$,.]", "");
-
-                double parsed = Double.parseDouble(cleanString);
-                String formatted = getNumberFormat().format((parsed / 100));
-
-                current = formatted;
+                String formatted = getNumberFormat().format((0 / 100));
                 getEditText().setText(formatted);
                 getEditText().setSelection(formatted.length());
 
@@ -302,6 +319,7 @@ public class FloatingEditText extends RelativeLayout {
     }
 
     public void initialize() {
+        addAnimation();
         if (editTextValue != null && !editTextValue.isEmpty())
             setEditTextValue(editTextValue);
     }
