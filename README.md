@@ -1,14 +1,18 @@
 # MaterialComponents
 MaterialEditText with support to add drawable icon on left and right side of EditText
 
+## Example
+
+To run the sample project, clone the repo, open and run with Android Studio IDE.
+
 ![alt text](https://image.ibb.co/hnof2G/Screen_Shot_2018_01_04_at_11_23_22.png)
 
-Gradle
+## Installation dependency
 ```xml
 compile 'com.github.ViniciusSossela:MaterialComponents:1.3.12'
 ```
 
-Layout XML
+## XML Layout Example
 ```xml
 <com.vsossella.materialcomponents.FloatingEditText
         android:id="@+id/valor_floating_edit_text"
@@ -25,3 +29,7 @@ Layout XML
         app:floating_label_text="Brazilian Monetary Value"
         app:icon_left="@drawable/r" />
 ```
+
+## Author
+
+Vinicius Sossella, viniciussossella@gmail.com
