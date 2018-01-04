@@ -1,5 +1,5 @@
-# MaterialComponents
-MaterialEditText with support to add drawable icon on left and right side of EditText
+# FloatingEditText
+Custom view with support to add drawable icon on left and right side of EditText
 
 ## Example
 
